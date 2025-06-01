@@ -1,0 +1,10 @@
+html, body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgb(12, 1, 26);
+    color: white;
+    width: 100vw;
+    min-height: 100vh; /* ✅ Ensures full page coverage */
+    overflow-x: hidden;
+}

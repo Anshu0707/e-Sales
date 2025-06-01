@@ -1,0 +1,39 @@
+.search-box {
+  position: relative;
+  width: 95vw; /* ✅ Full width without overflow */
+  max-width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 12px; /* ✅ Balanced padding */
+  margin: 10px auto;
+  height: 50px; /* ✅ Slightly increased to fit input */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.search-input {
+  flex: 1;
+  padding: 10px; /* ✅ Ensures proper input spacing */
+  font-size: 1.1rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 60px; /* ✅ Ensures input fits neatly */
+  box-sizing: border-box; /* ✅ Includes padding/border in total size */
+}
+
+/* 🔹 Adjust for smaller screens */
+@media (max-width: 768px) {
+  .search-box {
+    height: 60px; /* ✅ Slightly smaller on mobile */
+    padding: 10px;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    max-height: 40px;
+  }
+}

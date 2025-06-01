@@ -1,0 +1,47 @@
+.navbar {
+    width: 96vw; /* ✅ Expands Navbar across the full screen */
+    max-width: 100%; /* ✅ Prevents unintended overflow */
+    background-color: #ff5722;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: fixed; /* ✅ Ensures Navbar stays fixed */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px; /* ✅ Slightly reduced font size */
+    font-weight: bold;
+    transition: 0.3s;
+    white-space: nowrap; /* ✅ Prevents text wrapping */
+}
+
+.nav-link:hover {
+    color: #ffcccb;
+}
+
+/* ✅ Adds a white underline to the active link */
+.nav-link.active {
+    border-bottom: 2px solid white;
+    padding-bottom: 4px;
+    color: white;
+}
+
+.brand {
+    margin-left: 5%;
+    display: flex;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}

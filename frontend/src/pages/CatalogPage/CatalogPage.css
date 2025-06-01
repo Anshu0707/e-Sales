@@ -1,0 +1,10 @@
+.catalog-page {
+  overflow-y: auto; /* ✅ Ensures scrollbar always appears */
+  scrollbar-width: thin; /* ✅ Makes scrollbar visible */
+  scrollbar-color: #ccc #222; /* ✅ Light scrollbar with dark track */
+}
+.content-container {
+  width: 90%; /* ✅ Gives content proper width */
+  margin-top: 80px; /* ✅ Pushes heading below Navbar */
+  text-align: center;
+}

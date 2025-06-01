@@ -1,0 +1,44 @@
+.checkout-container {
+    padding: 40px;
+}
+
+.checkout-form{
+background-color: white;
+}
+/* ✅ Order Summary Styling */
+.summary-card {
+    width: 100%;
+    padding: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Smaller product image for compact layout */
+.summary-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* ✅ Improve form spacing */
+.MuiTextField-root {
+    margin-bottom: 12px;
+}
+
+.MuiButton-root {
+    margin-top: 15px;
+}
+
+/* ✅ Make layout responsive */
+@media (max-width: 768px) {
+    .summary-card {
+        padding: 8px;
+    }
+    .summary-image {
+        width: 70px;
+        height: 70px;
+    }
+    .checkout-container {
+        flex-direction: column; /* ✅ Stack vertically on smaller screens */
+    }
+}

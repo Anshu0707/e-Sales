@@ -1,0 +1,54 @@
+/* 🔹 Landing Page Container */
+.landing-container {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 3vh;
+    overflow-y: auto;
+    overflow-x: hidden; /* ✅ Prevents unwanted horizontal scrolling */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ✅ Ensures responsiveness */
+    gap: 40px;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/* 🔹 Suggestions Box */
+.suggestions-box {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.view-all-button {
+  display: flex;
+  justify-content: center; /* ✅ Centers the button */
+  position:relative;
+  bottom: 20px; /* ✅ Keeps it at the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* ✅ Perfect centering */
+  width: 100%;
+}
+/* 🔹 Remove Default WebKit Cross Button */
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+.welcome-heading {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}

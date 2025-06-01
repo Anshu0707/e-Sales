@@ -1,0 +1,89 @@
+.product-details-container {
+    padding: 40px;
+    margin-top: 20px;
+}
+
+/* ✅ Main image container */
+.image-card {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* ✅ Ensuring main product image is properly sized */
+.main-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* ✅ Smaller thumbnails & proper spacing */
+.thumbnail-images {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.thumbnail {
+    width: 50px; /* ✅ Making thumbnails smaller */
+    height: 50px;
+    cursor: pointer;
+}
+
+.thumbnail:hover {
+    border: 2px solid #007bff;
+}
+
+/* ✅ Compact selection boxes */
+.white-select {
+    width: 200px !important; /* ✅ Making size/color dropdown smaller */
+    background-color: white !important;
+}
+
+/* ✅ Smaller Buy Now Button */
+.buy-now {
+    width: 220px !important; /* ✅ Making Buy Now button smaller */
+    font-size: 16px;
+}
+
+/* ✅ Responsive quantity controls */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100px; /* ✅ Matches size of other fields */
+    background-color: #333;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+/* ✅ Style buttons in white */
+.quantity-control .MuiIconButton-root {
+    color: white !important;
+    font-size: 18px;
+}
+
+/* ✅ Style quantity number */
+.quantity-control span {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+/* ✅ Adjust size for smaller screens */
+@media (max-width: 768px) {
+    .quantity-control {
+        width: 160px;
+        gap: 6px;
+        padding: 5px;
+    }
+
+    .quantity-control .MuiIconButton-root {
+        font-size: 16px;
+    }
+
+    .quantity-control span {
+        font-size: 16px;
+    }
+}
