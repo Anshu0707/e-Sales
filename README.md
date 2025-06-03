@@ -70,27 +70,27 @@ npm start
 ---
 
 ## Previews
--
+
 ### Cart Page
 
 ![Screenshot 2025-06-03 210944](https://github.com/user-attachments/assets/5305e856-7107-4d96-8341-649f64a5fe4f)
--
+--
 ### Checkout Page (Dynamic order summary of selected items from previous page)
 
 ![Screenshot 2025-06-03 210612](https://github.com/user-attachments/assets/e7ea2131-0798-4e46-8ed0-a4ac2339cdeb)
--
+--
 ### Thank You Page
 
 ![Screenshot 2025-06-03 210714](https://github.com/user-attachments/assets/19c47760-39cf-4f5c-888a-68f43928e371)
--
+--
 ### DB entries for Orders
 
 ![Screenshot 2025-06-02 025655](https://github.com/user-attachments/assets/594e1fc0-7910-4b06-9356-e5cf2ff43565)
--
+--
 ### DB entries for Products
 
 ![Screenshot 2025-06-02 025741](https://github.com/user-attachments/assets/992f527f-4cd5-457b-89d8-da486ac411f5)
--
+--
 ### Email notification in mailtrap.io
 
 ![Screenshot 2025-06-03 210847](https://github.com/user-attachments/assets/638a5c86-0062-47da-b5b5-82da0e7fbe60)
