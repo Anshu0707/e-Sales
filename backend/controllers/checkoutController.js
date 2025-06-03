@@ -1,5 +1,5 @@
 const Order = require("../models/Order");
-const Product = require("../models/product");
+const Product = require("../models/Product");
 const sendOrderEmail = require("../config/mailtrap");
 const { v4: uuidv4 } = require("uuid");
 
