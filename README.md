@@ -65,6 +65,9 @@ Welcome to **e-Sales**, a modern full-stack e-commerce platform built with React
 cd backend
 npm install
 npm start
+```
+
+---
 
 ![Screenshot 2025-06-03 210944](https://github.com/user-attachments/assets/5305e856-7107-4d96-8341-649f64a5fe4f)
 ![Screenshot 2025-06-03 210612](https://github.com/user-attachments/assets/e7ea2131-0798-4e46-8ed0-a4ac2339cdeb)
