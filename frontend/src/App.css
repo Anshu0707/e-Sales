@@ -5,6 +5,6 @@ html, body {
     background: rgb(12, 1, 26);
     color: white;
     width: 100vw;
-    min-height: 100vh; /* ✅ Ensures full page coverage */
+    min-height: 100vh; 
     overflow-x: hidden;
 }

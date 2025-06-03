@@ -9,7 +9,7 @@ import "../LandingPage/LandingPage.css";
 import { useParams, useNavigate } from "react-router-dom";
 const LandingPage = () => {
   const [products, setProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // ✅ Manage search state here
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -23,31 +23,34 @@ const LandingPage = () => {
   );
 
   const handleLandingPageBuyNow = (product) => {
+    const selectedSize = product.sizes[0];
+    const selectedColor = product.colors[0];
+
     const selectedProduct = {
       _id: product._id,
       name: product.name,
       images: product.images,
       price: product.price,
-      selectedSize: product.sizes[0], // ✅ Default first size
-      selectedColor: product.colors[0], // ✅ Default first color
-      quantity: 1, // ✅ Default quantity
+      selectedSize,
+      selectedColor,
+      quantity: 1,
     };
 
-    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct)); // ✅ Store selection
-    navigate(`/checkout?productId=${product._id}`);
+    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
+    navigate(
+      `/checkout?productId=${product._id}&size=${encodeURIComponent(
+        selectedSize
+      )}&color=${encodeURIComponent(selectedColor)}&quantity=1`
+    );
   };
 
   return (
     <Container className="landing-container" maxWidth={false} disableGutters>
       <Navbar />
-      {/* <Typography variant="h3" gutterBottom className="welcome-heading">
-        Welcome to Our Store
-      </Typography> */}
       <Typography variant="body1">
         Explore our latest collection now!
       </Typography>
 
-      {/* ✅ Use SearchBox component */}
       <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       <Grid container className="product-grid">

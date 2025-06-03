@@ -1,15 +1,16 @@
 .navbar {
-    width: 96vw; /* ✅ Expands Navbar across the full screen */
-    max-width: 100%; /* ✅ Prevents unintended overflow */
+    width: 96vw; 
+    max-width: 100%; 
     background-color: #ff5722;
+    height: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    position: fixed; /* ✅ Ensures Navbar stays fixed */
+    position: fixed; 
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 800;
 }
 
 .nav-links {
@@ -20,17 +21,16 @@
 .nav-link {
     color: white;
     text-decoration: none;
-    font-size: 16px; /* ✅ Slightly reduced font size */
+    font-size: 16px; 
     font-weight: bold;
     transition: 0.3s;
-    white-space: nowrap; /* ✅ Prevents text wrapping */
+    white-space: nowrap; 
 }
 
 .nav-link:hover {
     color: #ffcccb;
 }
 
-/* ✅ Adds a white underline to the active link */
 .nav-link.active {
     border-bottom: 2px solid white;
     padding-bottom: 4px;
@@ -44,4 +44,10 @@
     font-size: 20px;
     font-weight: bold;
     color: white;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
 }

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close"; // ✅ Import close icon
-import SearchBox from "../SearchBox/index"; // ✅ Import search box
-import "./Navbar.css"; // ✅ Import styles
+import { IconButton, Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SearchBox from "../SearchBox/index";
+import { useCart } from "../../context/CartContext";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const location = useLocation(); // ✅ Get current page path
+  const location = useLocation();
+
+  const { cartItems } = useCart();
+  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <nav className="navbar">
@@ -36,9 +40,21 @@ const Navbar = () => {
         >
           Contact
         </Link>
+
+        <IconButton
+          aria-label="cart"
+          component={Link}
+          to="/cart"
+          size="large"
+          color="inherit"
+          className="cart-button"
+        >
+          <Badge badgeContent={cartCount} color="error" className="cart-badge">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
       </div>
 
-      {/* ✅ Conditionally Render Search Box */}
       {isSearchOpen && <SearchBox onClose={() => setIsSearchOpen(false)} />}
     </nav>
   );

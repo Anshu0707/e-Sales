@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // ✅ Navigation Hook
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Container,
@@ -15,40 +15,43 @@ import {
 } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import RelatedProducts from "../RelatedProducts/index"; // ✅ Import Related Products component
+import RelatedProducts from "../RelatedProducts/index";
 import "./ProductDetails.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // ✅ Navigation Hook
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(""); // ✅ Default to main image
+  const [selectedImage, setSelectedImage] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState(""); // ✅ Store selected size
-  const [selectedColor, setSelectedColor] = useState(""); // ✅ Store selected color
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/products/${id}`)
       .then((response) => {
         setProduct(response.data);
-        setSelectedImage(response.data.images[0]); // ✅ Main image
+        setSelectedImage(response.data.images[0]);
       })
       .catch((error) => console.error("Error fetching product:", error));
   }, [id]);
 
   const handleBuyNow = () => {
-    console.log("User is checking out with:", {
-      productId: product._id,
+    if (!selectedSize || !selectedColor) {
+      alert("Please select size and color before proceeding.");
+      return;
+    }
+
+    const selectedProduct = {
+      ...product,
       selectedSize,
       selectedColor,
       quantity,
-    }); // ✅ Ensures all data is correctly being logged
+    };
 
-    if (!selectedSize || !selectedColor) {
-      alert("Please select size and color before proceeding."); // ✅ Prevents empty selections
-      return;
-    }
+    // ✅ Save enriched product info for CheckoutPage
+    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
 
     navigate(
       `/checkout?productId=${product._id}&size=${encodeURIComponent(
@@ -64,7 +67,6 @@ const ProductDetails = () => {
   return (
     <Container className="product-details-container">
       <Grid container spacing={4}>
-        {/* 🔹 Left Side - Main Image & Thumbnails */}
         <Grid item xs={12} md={5}>
           <Card className="image-card">
             <CardMedia
@@ -88,11 +90,9 @@ const ProductDetails = () => {
           </Card>
         </Grid>
 
-        {/* 🔹 Right Side - Product Details */}
         <Grid item xs={12} md={7}>
           <Typography variant="h4">{product.name}</Typography>
 
-          {/* ✅ Size Selection */}
           <Typography variant="subtitle1" sx={{ mt: 2 }}>
             Choose Size:
           </Typography>
@@ -109,7 +109,6 @@ const ProductDetails = () => {
             ))}
           </Select>
 
-          {/* ✅ Color Selection */}
           <Typography variant="subtitle1" sx={{ mt: 2 }}>
             Choose Color:
           </Typography>
@@ -126,7 +125,6 @@ const ProductDetails = () => {
             ))}
           </Select>
 
-          {/* ✅ Quantity Selection */}
           <Typography variant="subtitle1" sx={{ mt: 2 }}>
             Quantity:
           </Typography>
@@ -146,28 +144,26 @@ const ProductDetails = () => {
             </IconButton>
           </Box>
 
-          {/* ✅ Price & Buy Button */}
           <Typography variant="h5" sx={{ mt: 2 }}>
             Price: Rs. {product.price.toFixed(2)}
           </Typography>
+
           <Button
             variant="contained"
             color="primary"
             fullWidth
             className="buy-now"
-            onClick={handleBuyNow} // ✅ Redirects to checkout
+            onClick={handleBuyNow}
           >
             Buy Now
           </Button>
 
-          {/* ✅ Product Description */}
           <Typography variant="body1" sx={{ mt: 3 }}>
             {product.description}
           </Typography>
         </Grid>
       </Grid>
 
-      {/* 🔹 Related Products Section */}
       <RelatedProducts product={product} />
     </Container>
   );

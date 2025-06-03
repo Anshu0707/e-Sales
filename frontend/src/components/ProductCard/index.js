@@ -8,30 +8,47 @@ import {
   Box,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import "./ProductCard.css"; // ✅ Import styles
+import { useCart } from "../../context/CartContext";
+import "./ProductCard.css";
 
 const ProductCard = ({ product, showBuyNow }) => {
   const [hovered, setHovered] = useState(false);
   const navigate = useNavigate();
+  const { addToCart } = useCart();
 
-  // ✅ Store product details before navigating
   const handleBuyNow = () => {
     const selectedProduct = {
       _id: product._id,
       name: product.name,
       images: product.images,
       price: product.price,
-      selectedSize: product.sizes[0], // ✅ First available size
-      selectedColor: product.colors[0], // ✅ First available color
-      quantity: 1, // ✅ Default quantity is 1
+      selectedSize: product.sizes[0],
+      selectedColor: product.colors[0],
+      quantity: 1,
     };
 
-    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct)); // ✅ Store product details
+    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
     navigate(`/checkout?productId=${product._id}`);
   };
+
   const handleNavigateToDetails = () => {
-    localStorage.setItem("selectedProduct", JSON.stringify(product)); // ✅ Store product in localStorage
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
     navigate(`/product/${product._id}`);
+  };
+
+  const handleAddToCart = (event) => {
+    event.stopPropagation();
+
+    const cartProduct = {
+      _id: product._id,
+      name: product.name,
+      images: product.images,
+      price: product.price,
+      selectedSize: product.sizes[0],
+      selectedColor: product.colors[0],
+      quantity: 1,
+    };
+    addToCart(cartProduct);
   };
 
   return (
@@ -39,7 +56,7 @@ const ProductCard = ({ product, showBuyNow }) => {
       className="product-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={handleNavigateToDetails} // ✅ Clicking navigates to Product Details Page
+      onClick={handleNavigateToDetails}
       sx={{ cursor: "pointer" }}
     >
       <Box className="product-image-container">
@@ -69,13 +86,24 @@ const ProductCard = ({ product, showBuyNow }) => {
             variant="contained"
             color="success"
             fullWidth
-            // onClick={(event) => {
-            //   event.stopPropagation(); // ✅ Prevent navigation conflict with `onClick`
-            //   handleBuyNow();
-            // }}
+            onClick={(event) => {
+              event.stopPropagation();
+              handleBuyNow();
+            }}
             className="buy-now-button"
           >
             Buy Now
+          </Button>
+
+          <Button
+            variant="outlined"
+            color="primary"
+            fullWidth
+            sx={{ mt: 1 }}
+            onClick={handleAddToCart}
+            className="add-to-cart-button"
+          >
+            Add to Cart
           </Button>
         </Box>
       )}

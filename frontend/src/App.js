@@ -5,12 +5,14 @@ import CatalogPage from "./pages/CatalogPage";
 import ContactPage from "./pages/ContactPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ThankYouPage from "./pages/ThankYouPage";
-import ProductDetailsPage from "./pages/ProductDetailsPage"; // ✅ Import Product Details Page
-import "./App.css"; // ✅ Ensure global styles are applied
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import CartPage from "./pages/CartPage";
+import { CartProvider } from "./context/CartContext";
+import "./App.css";
 
 const App = () => {
   return (
-    <div>
+    <CartProvider>
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -18,11 +20,11 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/thank-you/:orderNumber" element={<ThankYouPage />} />
-          <Route path="/product/:id" element={<ProductDetailsPage />} />{" "}
-          {/* ✅ Added Product Details Page */}
+          <Route path="/product/:id" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Router>
-    </div>
+    </CartProvider>
   );
 };
 

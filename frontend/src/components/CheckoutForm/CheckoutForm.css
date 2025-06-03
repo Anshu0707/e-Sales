@@ -1,0 +1,18 @@
+.checkout-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.checkout-form .MuiTextField-root {
+  margin-bottom: 16px;
+}
+
+.checkout-form .MuiSelect-root {
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.checkout-form .MuiButton-root {
+  margin-top: 20px;
+}

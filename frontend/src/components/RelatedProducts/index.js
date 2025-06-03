@@ -6,7 +6,7 @@ import "./RelatedProducts.css";
 
 const RelatedProducts = ({ product }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const navigate = useNavigate(); // ✅ Enables Full Navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -15,7 +15,7 @@ const RelatedProducts = ({ product }) => {
         const filteredProducts = res.data.filter(
           (p) => p.category === product.category && p._id !== product._id
         );
-        setRelatedProducts(filteredProducts.slice(0, 4)); // ✅ Display up to 4 related products
+        setRelatedProducts(filteredProducts.slice(0, 4));
       })
       .catch((err) => console.error(err));
   }, [product.category, product._id]);
@@ -30,7 +30,7 @@ const RelatedProducts = ({ product }) => {
           <Grid item xs={6} sm={3} key={related._id}>
             <Card
               className="related-product-card"
-              onClick={() => navigate(`/product/${related._id}`)} // ✅ Force page navigation
+              onClick={() => navigate(`/product/${related._id}`)}
             >
               <CardMedia
                 component="img"

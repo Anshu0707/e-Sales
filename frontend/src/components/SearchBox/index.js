@@ -9,7 +9,6 @@ const SearchBox = ({ searchQuery, setSearchQuery }) => {
   const [suggestions, setSuggestions] = useState([]);
   const debouncedSearch = useDebouncedSearch(searchQuery, 500);
 
-  // ✅ Fetch suggestions based on debounced search query
   useEffect(() => {
     if (debouncedSearch) {
       axios

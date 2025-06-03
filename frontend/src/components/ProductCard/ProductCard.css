@@ -1,17 +1,16 @@
 .product-card {
-  width: 350px; /* ✅ Increased size */
-  height: 500px; /* ✅ Slightly taller */
-  margin: 20px; /* ✅ Increased gap between cards */
+  width: 350px; 
+  height: 500px; 
+  margin: 20px; 
   transition: 0.3s;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* ✅ Ensures content stays at the bottom */
+  justify-content: flex-end; 
   align-items: center;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   flex: 0 0 auto;
 }
 
-/* 🔹 Product Content */
 .product-content {
   width: 100%;
   text-align: center;
@@ -20,25 +19,22 @@
   align-items: center;
 }
 
-/* 🔹 Product Name */
 .product-name {
   white-space: normal;
   overflow: visible;
   text-overflow: unset;
   word-wrap: break-word;
   text-align: center;
-  font-size: 20px; /* ✅ Slightly larger */
+  font-size: 20px; 
   font-weight: bold;
 }
 
-/* 🔹 Product Price */
 .product-price {
   font-size: 18px;
   color: #333;
   margin-top: 5px;
 }
 
-/* 🔹 Buy Now Button */
 .product-button-container {
   width: 100%;
   padding: 10px;
@@ -58,15 +54,14 @@
   background-color: #e64a19;
 }
 
-/* 🔹 Ensure Grid Wraps Properly */
 @media (max-width: 1024px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr); /* ✅ Two cards per row on medium screens */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 768px) {
   .product-grid {
-    grid-template-columns: repeat(1, 1fr); /* ✅ One card per row on small screens */
+    grid-template-columns: repeat(1, 1fr); 
   }
 }

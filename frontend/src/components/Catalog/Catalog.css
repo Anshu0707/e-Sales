@@ -1,6 +1,6 @@
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* ✅ Ensures 4 products per row */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   width: 100%;
 }

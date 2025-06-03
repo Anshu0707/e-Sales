@@ -1,0 +1,16 @@
+.cart-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 15px;
+  background-color: #100f0f;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+}
+
+.cart-page-container h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+}

@@ -47,7 +47,6 @@ exports.processCheckout = async (req, res) => {
 
     await newOrder.save();
 
-    // Update product inventory only on approved transaction
     if (transactionStatus === "Approved") {
       for (const item of products) {
         await Product.findByIdAndUpdate(item.productId, {

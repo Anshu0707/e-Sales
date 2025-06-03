@@ -16,7 +16,6 @@ const Contact = () => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
 
-    // Validate Email
     if (name === "email") {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       setErrors({
@@ -25,7 +24,6 @@ const Contact = () => {
       });
     }
 
-    // Validate Phone (10-digit Indian format)
     if (name === "phone") {
       const phoneRegex = /^[6-9]\d{9}$/;
       setErrors({
