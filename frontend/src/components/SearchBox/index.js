@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import useDebouncedSearch from "../../hooks/useDebouncedSearch";
 import axios from "axios";
 import "./SearchBox.css";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const SearchBox = ({ searchQuery, setSearchQuery }) => {
   const [suggestions, setSuggestions] = useState([]);
@@ -12,7 +13,7 @@ const SearchBox = ({ searchQuery, setSearchQuery }) => {
   useEffect(() => {
     if (debouncedSearch) {
       axios
-        .get(`http://localhost:5000/api/search?query=${debouncedSearch}`)
+        .get(`${API_BASE_URL}/api/search?query=${debouncedSearch}`)
         .then((response) => setSuggestions(response.data))
         .catch((error) => console.error("Error fetching suggestions:", error));
     } else {

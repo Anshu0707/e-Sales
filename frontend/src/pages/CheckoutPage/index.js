@@ -6,6 +6,7 @@ import CheckoutForm from "../../components/CheckoutForm";
 import CheckoutSummary from "../../components/CheckoutSummary";
 import { useCart } from "../../context/CartContext";
 import "./CheckoutPage.css";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const CheckoutPage = () => {
         setProductsToCheckout([product]);
       } else {
         axios
-          .get(`http://localhost:5000/api/products/${productId}`)
+          .get(`${API_BASE_URL}/api/products/${productId}`)
           .then((response) => {
             const fallbackProduct = {
               ...response.data,

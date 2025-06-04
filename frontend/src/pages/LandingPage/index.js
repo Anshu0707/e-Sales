@@ -7,13 +7,15 @@ import SearchBox from "../../components/SearchBox";
 import { Container, Grid, Typography, Button, Box } from "@mui/material";
 import "../LandingPage/LandingPage.css";
 import { useParams, useNavigate } from "react-router-dom";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 const LandingPage = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products")
+      .get(`${API_BASE_URL}/api/products`)
       .then((response) => setProducts(response.data.slice(0, 8)))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);

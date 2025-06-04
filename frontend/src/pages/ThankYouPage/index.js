@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ThankYouSummary from "../../components/ThankYouSummary";
 import "./ThankYouPage.css";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const ThankYouPage = () => {
   const { orderNumber } = useParams();
@@ -10,7 +11,7 @@ const ThankYouPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/orders/${orderNumber}`)
+      .get(`${API_BASE_URL}/api/orders/${orderNumber}`)
       .then((res) => setOrderDetails(res.data))
       .catch((err) => console.error(err));
   }, [orderNumber]);

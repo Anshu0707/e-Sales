@@ -17,6 +17,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import RelatedProducts from "../RelatedProducts/index";
 import "./ProductDetails.css";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -29,7 +30,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
+      .get(`${API_BASE_URL}/api/products/${id}`)
       .then((response) => {
         setProduct(response.data);
         setSelectedImage(response.data.images[0]);

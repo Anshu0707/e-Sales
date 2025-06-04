@@ -3,6 +3,7 @@ import axios from "axios";
 import { Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./RelatedProducts.css";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const RelatedProducts = ({ product }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -10,7 +11,7 @@ const RelatedProducts = ({ product }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products?category=${product.category}`)
+      .get(`${API_BASE_URL}/api/products?category=${product.category}`)
       .then((res) => {
         const filteredProducts = res.data.filter(
           (p) => p.category === product.category && p._id !== product._id
