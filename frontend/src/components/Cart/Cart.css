@@ -1,99 +1,90 @@
 .cart-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 24px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Prevents content overflow */
 }
 
+/* Stack Fix: Ensures everything fits inside Box */
+.cart-stack {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ensure Cart Item fits inside Cart Container */
 .cart-item {
+  width: 100%; /* Makes it take full width of parent */
+  max-width: 95%; /* Prevents stretching beyond container */
   display: flex;
+  flex-direction: row;
+  padding: 16px;
   gap: 20px;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
+  margin-right:  auto; /* Centers the Card */
+
 }
 
+
+
+/* Ensure CardMedia fits properly */
 .cart-item-image {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  max-height: 120px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
+/* Ensure CardContent fits properly */
 .cart-item-details {
   flex-grow: 1;
   position: relative;
+  width: 100%;
 }
 
-.cart-item-name {
-  margin: 0 0 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
+/* Quantity Controls */
 .quantity-controls {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
-.qty-btn {
-  width: 30px;
-  height: 30px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 4px;
+/* Move Remove Button for Small Screens */
+@media (max-width: 430px) {
+  .cart-container {
+    width: 95%;
+    padding: 16px;
+    margin-left: auto; /* Centers properly */
+    margin-right: auto
+  }
+
+  .cart-item {
+    width:  100%;
+    max-width: 90%;
+    padding: 12px;
+    margin: 0 auto; /* Ensures uniform centering */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cart-item-image {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
 }
 
-.qty-btn:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
-}
 
-.quantity {
-  font-size: 1.1rem;
-  min-width: 25px;
-  text-align: center;
-}
 
-.remove-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: none;
-  background: none;
-  font-size: 24px;
-  color: #ff4d4d;
-  cursor: pointer;
-}
-
-.remove-btn:hover {
-  color: #ff0000;
-}
-
-.checkout-btn {
-  align-self: flex-end;
-  padding: 12px 25px;
-  background-color: #28a745;
-  border: none;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.checkout-btn:hover {
-  background-color: #218838;
-}
-
-.empty-cart {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #666;
-  padding: 30px 0;
-}

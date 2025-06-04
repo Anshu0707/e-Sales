@@ -6,7 +6,9 @@ const CartPage = () => {
   return (
     <div className="cart-page-container">
       <h1>Your Shopping Cart</h1>
-      <Cart />
+      <div className="cart-content">
+        <Cart />
+      </div>
     </div>
   );
 };

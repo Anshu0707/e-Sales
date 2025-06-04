@@ -64,3 +64,26 @@
     padding: 6px;
   }
 }
+
+@media (max-width: 430px) {
+  .nav-links {
+    gap: 3px;
+    margin-right: 5%;
+  }
+
+  .nav-link {
+    font-size: 8px; /* Reduce font size for better readability */
+    padding: 6px;
+  }
+
+  .cart-button {
+    transform: scale(0.8); /* Shrinks the icon */
+    padding: 4px; /* Reduces extra spacing */
+  }
+
+  .cart-badge {
+    font-size: 12px; /* Adjusts badge size */
+  }
+
+
+}

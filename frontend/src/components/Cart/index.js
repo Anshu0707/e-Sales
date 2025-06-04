@@ -13,13 +13,14 @@ import {
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CloseIcon from "@mui/icons-material/Close";
+import "./Cart.css";
 
 const Cart = () => {
   const { cartItems, updateQuantity, removeFromCart } = useCart();
 
   if (cartItems.length === 0) {
     return (
-      <Typography variant="h6" align="center" sx={{ color: "white" }}>
+      <Typography variant="h6" align="center" className="empty-cart">
         Your cart is empty.
       </Typography>
     );
@@ -31,97 +32,78 @@ const Cart = () => {
   );
 
   return (
-    <Box
-      sx={{
-        maxWidth: 900,
-        mx: "auto",
-        p: 3,
-        bgcolor: "#fafafa",
-        borderRadius: 2,
-        boxShadow: 1,
-      }}
-    >
-      <Stack spacing={3}>
+    <Box className="cart-container">
+      <Stack spacing={3} className="cart-stack">
         {cartItems.map((item) => (
           <Card
             key={`${item._id}-${item.selectedSize}-${item.selectedColor}`}
-            sx={{ display: "flex", p: 2 }}
+            className="cart-item"
           >
             <CardMedia
               component="img"
               image={item.images[0]}
               alt={item.name}
-              sx={{
-                width: 120,
-                height: 120,
-                borderRadius: 2,
-                objectFit: "cover",
-              }}
+              className="cart-item-image"
             />
-            <CardContent sx={{ flexGrow: 1, position: "relative" }}>
-              <Typography variant="h6" gutterBottom>
+            <CardContent className="cart-item-details">
+              <Typography variant="h6" className="cart-item-name">
                 {item.name}
               </Typography>
-              <Typography variant="body2">
+              <Typography className="cart-item-info">
                 Color: {item.selectedColor}
               </Typography>
-              <Typography variant="body2">Size: {item.selectedSize}</Typography>
-              <Typography variant="body2" sx={{ mt: 1 }}>
+              <Typography className="cart-item-info">
+                Size: {item.selectedSize}
+              </Typography>
+              <Typography className="cart-price">
                 Price: Rs. {item.price.toFixed(2)}
               </Typography>
 
-              <Stack direction="row" spacing={1} alignItems="center" mt={2}>
+              <Stack
+                direction="row"
+                spacing={1}
+                alignItems="center"
+                className="quantity-controls"
+              >
                 <IconButton
                   onClick={() => updateQuantity(item, item.quantity - 1)}
                   disabled={item.quantity <= 1}
                   color="primary"
-                  size="small"
+                  className="qty-btn"
                 >
                   <RemoveCircleOutlineIcon />
                 </IconButton>
-                <Typography
-                  variant="body1"
-                  sx={{ minWidth: 25, textAlign: "center" }}
-                >
-                  {item.quantity}
-                </Typography>
+                <Typography className="quantity">{item.quantity}</Typography>
                 <IconButton
                   onClick={() => updateQuantity(item, item.quantity + 1)}
                   color="primary"
-                  size="small"
+                  className="qty-btn"
                 >
                   <AddCircleOutlineIcon />
                 </IconButton>
-              </Stack>
 
-              <IconButton
-                onClick={() => removeFromCart(item)}
-                aria-label={`Remove ${item.name} from cart`}
-                sx={{
-                  position: "absolute",
-                  top: 8,
-                  right: 8,
-                  color: "error.main",
-                }}
-              >
-                <CloseIcon />
-              </IconButton>
+                <IconButton
+                  onClick={() => removeFromCart(item)}
+                  aria-label={`Remove ${item.name} from cart`}
+                  className="remove-btn"
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Stack>
             </CardContent>
           </Card>
         ))}
 
-        <Typography
-          variant="h6"
-          sx={{ textAlign: "right", mt: 3, color: "black" }}
-        >
+        <Typography variant="h6" className="cart-price total">
           Total: Rs. {total.toFixed(2)}
         </Typography>
 
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Box className="checkout-section">
           <Button
             variant="contained"
             color="success"
             size="large"
+            className="checkout-btn"
             onClick={() => (window.location.href = "/checkout")}
           >
             Proceed to Checkout
