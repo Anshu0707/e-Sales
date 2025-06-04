@@ -49,3 +49,23 @@ input[type="search"]::-webkit-search-cancel-button {
   font-weight: bold;
   text-align: center;
 }
+
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr); 
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
