@@ -3,12 +3,14 @@ import axios from "axios";
 import { Grid, Typography } from "@mui/material";
 import ProductCard from "../../components/ProductCard";
 import "./Catalog.css";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
+
 const Catalog = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products")
+      .get(`${API_BASE_URL}/api/products`)
       .then((response) => setProducts(response.data))
       .catch((error) => console.error("❌ Error fetching products:", error));
   }, []);
