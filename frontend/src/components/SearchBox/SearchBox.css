@@ -41,7 +41,7 @@
 @media (max-width: 600px) {
   
   .search-box {
-    width: 85%; /* Full width */
+    width: 85%; 
     padding: 6px;
   }
  
@@ -55,7 +55,7 @@
 @media (max-width: 430px) {
   
   .search-box {
-    width: 85%; /* Full width */
+    width: 85%; 
     padding: 6px;
   }
  

@@ -51,7 +51,6 @@ const ProductDetails = () => {
       quantity,
     };
 
-    // ✅ Save enriched product info for CheckoutPage
     localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
 
     navigate(

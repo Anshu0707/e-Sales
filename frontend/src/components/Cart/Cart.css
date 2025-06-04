@@ -7,31 +7,29 @@
   background-color: white;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Prevents content overflow */
+  overflow: hidden;
 }
 
-/* Stack Fix: Ensures everything fits inside Box */
+
 .cart-stack {
   width: 100%;
   max-width: 100%;
 }
 
-/* Ensure Cart Item fits inside Cart Container */
+
 .cart-item {
-  width: 100%; /* Makes it take full width of parent */
-  max-width: 95%; /* Prevents stretching beyond container */
+  width: 100%; 
+  max-width: 95%; 
   display: flex;
   flex-direction: row;
   padding: 16px;
   gap: 20px;
   border-bottom: 1px solid #ddd;
-  margin-right:  auto; /* Centers the Card */
+  margin-right:  auto; 
 
 }
 
 
-
-/* Ensure CardMedia fits properly */
 .cart-item-image {
   width: 100%;
   max-width: 120px;
@@ -41,14 +39,12 @@
   object-fit: cover;
 }
 
-/* Ensure CardContent fits properly */
 .cart-item-details {
   flex-grow: 1;
   position: relative;
   width: 100%;
 }
 
-/* Quantity Controls */
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -57,12 +53,11 @@
   flex-wrap: wrap;
 }
 
-/* Move Remove Button for Small Screens */
 @media (max-width: 430px) {
   .cart-container {
     width: 95%;
     padding: 16px;
-    margin-left: auto; /* Centers properly */
+    margin-left: auto; 
     margin-right: auto
   }
 
@@ -70,7 +65,7 @@
     width:  100%;
     max-width: 90%;
     padding: 12px;
-    margin: 0 auto; /* Ensures uniform centering */
+    margin: 0 auto; 
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -60,7 +60,7 @@
   }
 
   .nav-link {
-    font-size: 12px; /* Reduce font size for better readability */
+    font-size: 12px; 
     padding: 6px;
   }
 }
@@ -72,17 +72,17 @@
   }
 
   .nav-link {
-    font-size: 8px; /* Reduce font size for better readability */
+    font-size: 8px; 
     padding: 6px;
   }
 
   .cart-button {
-    transform: scale(0.8); /* Shrinks the icon */
-    padding: 4px; /* Reduces extra spacing */
+    transform: scale(0.8); 
+    padding: 4px;
   }
 
   .cart-badge {
-    font-size: 12px; /* Adjusts badge size */
+    font-size: 12px; 
   }
 
 
