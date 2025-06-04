@@ -1,6 +1,6 @@
 .search-box {
   position: relative;
-  width: 95vw; 
+  width: 96%; 
   max-width: 100%;
   background: white;
   border-radius: 8px;
@@ -17,7 +17,7 @@
 .search-input {
   flex: 1;
   padding: 10px; 
-  font-size: 1.1rem;
+  font-size: 16px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -33,6 +33,13 @@
 
   .search-input {
     font-size: 1rem;
-    max-height: 40px;
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-input {
+    font-size: 14px;
+    padding: 8px;
   }
 }

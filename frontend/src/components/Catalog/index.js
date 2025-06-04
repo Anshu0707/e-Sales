@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import ProductCard from "../../components/ProductCard";
 import "./Catalog.css";
 const API_BASE_URL = process.env.REACT_APP_API_URL;

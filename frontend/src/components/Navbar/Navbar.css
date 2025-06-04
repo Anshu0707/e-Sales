@@ -1,5 +1,5 @@
 .navbar {
-    width: 96vw; 
+    width: 100vw; 
     max-width: 100%; 
     background-color: #ff5722;
     height: 30px;
@@ -16,6 +16,7 @@
 .nav-links {
     display: flex;
     gap: 20px;
+    margin-right: 2%;
 }
 
 .nav-link {
@@ -38,7 +39,7 @@
 }
 
 .brand {
-    margin-left: 5%;
+    margin-left: 10%;
     display: flex;
     transform: translateX(-50%);
     font-size: 20px;
