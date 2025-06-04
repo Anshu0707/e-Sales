@@ -77,7 +77,7 @@ const CheckoutPage = () => {
   const handleCheckout = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/checkout", {
+      const response = await axios.post(`${API_BASE_URL}/api/checkout`, {
         products: productsToCheckout.map((item) => ({
           productId: item._id,
           name: item.name,
