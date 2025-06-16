@@ -30,7 +30,6 @@ const ThankYouPage = () => {
     <Container maxWidth="md" sx={{ mt: 6, mb: 6 }}>
       <ThankYouSummary orderDetails={orderDetails} />
 
-      {/* ✅ Pikachu GIF at the end using MUI Box */}
       <Box
         mt={6}
         textAlign="center"

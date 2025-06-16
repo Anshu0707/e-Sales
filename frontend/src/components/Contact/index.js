@@ -20,7 +20,7 @@ const Contact = () => {
   });
   const [errors, setErrors] = useState({ email: "", phone: "" });
 
-  // Typewriter effect setup (Fixed logic)
+  // Typewriter effect
   const fullText = "Contact Us";
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);

@@ -21,7 +21,7 @@ const CheckoutPage = () => {
   const { cartItems, clearCart } = useCart();
 
   const [productsToCheckout, setProductsToCheckout] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // ⬅️ Loading state
+  const [isLoading, setIsLoading] = useState(false); // Loading state
 
   const [order, setOrder] = useState({
     customerName: "",
@@ -77,7 +77,7 @@ const CheckoutPage = () => {
 
   const handleCheckout = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // ⬅️ Start loading animation
+    setIsLoading(true); // Start loading animation
 
     try {
       const response = await axios.post(`${API_BASE_URL}/api/checkout`, {
@@ -106,7 +106,7 @@ const CheckoutPage = () => {
     }
   };
 
-  // ⬅️ LOADING UI WHEN isLoading IS TRUE
+  // Conditionally loading UI when 'isLoading' IS TRUE
   if (isLoading) {
     return (
       <Container className="checkout-loading-container">

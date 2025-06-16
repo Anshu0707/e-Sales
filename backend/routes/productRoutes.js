@@ -7,7 +7,7 @@ const {
 
 const router = express.Router();
 
-router.get("/search", searchProducts); // 👈 Put this before /:id
+router.get("/search", searchProducts);
 router.get("/", getProducts);
 router.get("/:id", getProductById);
 

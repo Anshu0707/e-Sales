@@ -10,7 +10,7 @@
 
 .landing-search-wrapper {
   width: 100%;
-  padding: 80px 5% 20px; /* top margin clears fixed navbar */
+  padding: 80px 5% 20px; 
   display: flex;
   justify-content: center;
   box-sizing: border-box;

@@ -13,7 +13,6 @@
   position: relative;
 }
 
-/* Typewriter blinking cursor */
 .contact-heading::after {
   content: "|";
   animation: blink 1s step-start infinite;
