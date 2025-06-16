@@ -1,6 +1,6 @@
 const Order = require("../models/Order");
 const Product = require("../models/Product");
-const sendOrderEmail = require("../config/mailtrap");
+const sendOrderEmail = require("../config/sendgrid");
 const { v4: uuidv4 } = require("uuid");
 
 exports.processCheckout = async (req, res) => {
