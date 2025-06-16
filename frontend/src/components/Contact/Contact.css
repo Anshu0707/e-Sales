@@ -1,39 +1,69 @@
 .contact-container {
-    text-align: center;
-    margin-top: 40px;
-    padding: 30px;
-    border-radius: 10px;
+  text-align: center;
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .contact-heading {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: white;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: grey;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+/* Typewriter blinking cursor */
+.contact-heading::after {
+  content: "|";
+  animation: blink 1s step-start infinite;
+  margin-left: 2px;
+  font-weight: bold;
+  color: rgb(0, 83, 128);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .contact-message {
   margin-top: 25px;
-    color: white;
-    font-size: 1.2rem;
+  color: white;
+  font-size: 1.2rem;
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .input-field {
-    background-color: white; 
+  background-color: white;
+  border-radius: 12px;
+}
+
+.input-field .MuiOutlinedInput-root {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.input-field .MuiOutlinedInput-root.Mui-focused {
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
 }
 
 .submit-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 16px;
-    font-size: 1rem;
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-    background-color: #0056b3;
+  background: linear-gradient(90deg, #4338ca, #2563eb);
+  transform: scale(1.03);
 }

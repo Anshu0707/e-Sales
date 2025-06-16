@@ -1,78 +1,74 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import ProductCard from "../../components/ProductCard";
 import SearchBox from "../../components/SearchBox";
+import useDebouncedSearch from "../../hooks/useDebouncedSearch";
 import { Container, Grid, Typography, Button, Box } from "@mui/material";
-import "../LandingPage/LandingPage.css";
-import { useParams, useNavigate } from "react-router-dom";
+import "./LandingPage.css";
+
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const LandingPage = () => {
-  const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [initialProducts, setInitialProducts] = useState([]);
+  const { results: searchResults } = useDebouncedSearch(searchQuery, 500);
+
   useEffect(() => {
     axios
       .get(`${API_BASE_URL}/api/products`)
-      .then((response) => setProducts(response.data.slice(0, 8)))
-      .catch((error) => console.error("Error fetching products:", error));
+      .then((res) => setInitialProducts(res.data.slice(0, 9)))
+      .catch((err) => console.error("Error fetching products:", err));
   }, []);
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const handleLandingPageBuyNow = (product) => {
-    const selectedSize = product.sizes[0];
-    const selectedColor = product.colors[0];
-
-    const selectedProduct = {
-      _id: product._id,
-      name: product.name,
-      images: product.images,
-      price: product.price,
-      selectedSize,
-      selectedColor,
-      quantity: 1,
-    };
-
-    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
-    navigate(
-      `/checkout?productId=${product._id}&size=${encodeURIComponent(
-        selectedSize
-      )}&color=${encodeURIComponent(selectedColor)}&quantity=1`
-    );
-  };
+  const displayedProducts =
+    searchQuery.trim() && searchResults.length > 0
+      ? searchResults
+      : searchQuery.trim() && searchResults.length === 0
+      ? [] // no results found
+      : initialProducts;
 
   return (
     <Container className="landing-container" maxWidth={false} disableGutters>
-      <Navbar />
-      <Typography variant="body1">
-        Explore our latest collection now!
+      <Navbar
+        isSearchOpen={isSearchOpen}
+        setIsSearchOpen={setIsSearchOpen}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+
+      {isSearchOpen && (
+        <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      )}
+
+      <Typography variant="body1" color="white" sx={{ mt: "5rem" }}>
+        {searchQuery.trim() && searchResults.length === 0
+          ? "No products found."
+          : "Explore our latest collection now and click the products for more details."}
       </Typography>
 
-      <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-
-      <Grid container className="product-grid">
-        {filteredProducts.map((product) => (
-          <Grid item key={product._id} xs={12} sm={6} md={4}>
-            <ProductCard product={product} showBuyNow={true} />
+      <Grid container spacing={4} className="product-grid-landing">
+        {displayedProducts.map((product) => (
+          <Grid item xs={12} sm={6} md={3} key={product._id}>
+            <ProductCard product={product} showBuyNow />
           </Grid>
         ))}
       </Grid>
 
-      <Box className="view-all-button">
-        <Button
-          variant="contained"
-          color="primary"
-          component={Link}
-          to="/catalog"
-        >
-          View All
-        </Button>
-      </Box>
+      {!searchQuery && (
+        <Box className="view-all-button">
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/catalog"
+          >
+            View All
+          </Button>
+        </Box>
+      )}
     </Container>
   );
 };

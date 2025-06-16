@@ -12,7 +12,7 @@ import {
 
 const CheckoutSummary = ({ products, subtotal, estimatedTaxes, total }) => {
   return (
-    <Box sx={{ bgcolor: "#D78C3D", p: 3, borderRadius: 2, boxShadow: 1 }}>
+    <Box sx={{ bgcolor: "#fdf6e3", p: 3, borderRadius: 2, boxShadow: 1 }}>
       <List disablePadding>
         {products.map((item, index) => (
           <ListItem key={`${item._id}-${index}`} sx={{ py: 1, px: 0 }}>

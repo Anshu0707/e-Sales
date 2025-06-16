@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Button,
-  Box,
-} from "@mui/material";
+import { CardContent, CardMedia, Typography, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { motion } from "framer-motion";
 import "./ProductCard.css";
 
 const ProductCard = ({ product, showBuyNow }) => {
@@ -52,51 +46,57 @@ const ProductCard = ({ product, showBuyNow }) => {
   };
 
   return (
-    <Card
+    <motion.div
       className="product-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={handleNavigateToDetails}
-      sx={{ cursor: "pointer" }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <Box className="product-image-container">
-        <CardMedia
-          component="img"
-          height="280"
-          image={
+        <motion.img
+          src={
             hovered && product.images.length > 1
               ? product.images[1]
               : product.images[0]
           }
           alt={product.name}
           className="product-image"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 250 }}
         />
       </Box>
+
       <CardContent className="product-content">
-        <Typography variant="h6" className="product-name">
+        <Typography variant="subtitle1" className="product-name">
           {product.name}
         </Typography>
         <Typography variant="body1" className="product-price">
           Rs. {product.price.toFixed(2)}
         </Typography>
       </CardContent>
+
       {showBuyNow && (
         <Box className="product-button-container">
-          <Button
-            variant="contained"
-            color="success"
-            fullWidth
+          <motion.button
+            className="buy-now-button"
             onClick={(event) => {
               event.stopPropagation();
               handleBuyNow();
             }}
-            className="buy-now-button"
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0px 0px 12px rgba(255, 87, 34, 0.8)",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
             Buy Now
-          </Button>
+          </motion.button>
 
           <Button
-            variant="outlined"
+            variant="contained"
             color="primary"
             fullWidth
             sx={{ mt: 1 }}
@@ -107,7 +107,7 @@ const ProductCard = ({ product, showBuyNow }) => {
           </Button>
         </Box>
       )}
-    </Card>
+    </motion.div>
   );
 };
 

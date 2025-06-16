@@ -19,12 +19,12 @@ const Catalog = () => {
     <div>
       <Grid
         container
-        spacing={3}
+        spacing={4}
         justifyContent="center"
         className="catalog-grid"
       >
         {products.map((product) => (
-          <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={product._id} xs={12} sm={6} md={4}>
             <ProductCard product={product} showBuyNow={false} />{" "}
           </Grid>
         ))}

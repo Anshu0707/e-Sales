@@ -20,7 +20,12 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <Typography variant="h6" align="center" className="empty-cart">
+      <Typography
+        variant="h6"
+        align="center"
+        className="empty-cart"
+        color="white"
+      >
         Your cart is empty.
       </Typography>
     );

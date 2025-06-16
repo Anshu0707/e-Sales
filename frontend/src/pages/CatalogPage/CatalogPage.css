@@ -1,10 +1,22 @@
 .catalog-page {
-  overflow-y: auto; 
-  scrollbar-width: thin; 
-  scrollbar-color: #ccc #222; 
+  overflow-y: auto;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
+
 .content-container {
-  width: 90%; 
-  margin-top: 80px; 
+  width: 90%;
+  margin-top: 80px;
   text-align: center;
+}
+
+.catalog-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff, #ffe7fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  line-height: 1.2;
 }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Box, Typography, Container } from "@mui/material";
 import ThankYouSummary from "../../components/ThankYouSummary";
-import "./ThankYouPage.css";
+
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const ThankYouPage = () => {
@@ -17,12 +18,43 @@ const ThankYouPage = () => {
   }, [orderNumber]);
 
   if (!orderDetails)
-    return <p className="loading-text">Loading order details...</p>;
+    return (
+      <Container sx={{ mt: 10, textAlign: "center" }}>
+        <Typography variant="h6" color="text.secondary">
+          Loading order details...
+        </Typography>
+      </Container>
+    );
 
   return (
-    <div className="thank-you-page-container">
+    <Container maxWidth="md" sx={{ mt: 6, mb: 6 }}>
       <ThankYouSummary orderDetails={orderDetails} />
-    </div>
+
+      {/* ✅ Pikachu GIF at the end using MUI Box */}
+      <Box
+        mt={6}
+        textAlign="center"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Box
+          component="img"
+          src="https://tenor.com/view/thank-you-pikachu-thank-you-gif-15371199.gif"
+          alt="Thank you Pikachu"
+          sx={{
+            width: 220,
+            borderRadius: 2,
+            boxShadow: 3,
+            mb: 2,
+            animation: "zoomIn 0.8s ease",
+          }}
+        />
+        <Typography variant="h6" color="primary">
+          Pikachu says thank you for shopping!
+        </Typography>
+      </Box>
+    </Container>
   );
 };
 

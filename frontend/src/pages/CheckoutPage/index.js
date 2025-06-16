@@ -6,6 +6,7 @@ import CheckoutForm from "../../components/CheckoutForm";
 import CheckoutSummary from "../../components/CheckoutSummary";
 import { useCart } from "../../context/CartContext";
 import "./CheckoutPage.css";
+
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
 const CheckoutPage = () => {
@@ -20,6 +21,7 @@ const CheckoutPage = () => {
   const { cartItems, clearCart } = useCart();
 
   const [productsToCheckout, setProductsToCheckout] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); // ⬅️ Loading state
 
   const [order, setOrder] = useState({
     customerName: "",
@@ -39,7 +41,6 @@ const CheckoutPage = () => {
 
       if (saved) {
         const product = JSON.parse(saved);
-        console.log("🟢 Buy Now Flow — LocalStorage Product:", product);
         setProductsToCheckout([product]);
       } else {
         axios
@@ -76,6 +77,8 @@ const CheckoutPage = () => {
 
   const handleCheckout = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // ⬅️ Start loading animation
+
     try {
       const response = await axios.post(`${API_BASE_URL}/api/checkout`, {
         products: productsToCheckout.map((item) => ({
@@ -90,25 +93,44 @@ const CheckoutPage = () => {
         ...order,
       });
 
-      alert(
-        `Transaction ${response.data.message}! Order Number: ${response.data.orderNumber}`
-      );
+      setTimeout(() => {
+        setIsLoading(false); // not necessary if redirect is immediate
 
-      // If checkout came from cart, clear it after successful order
-      if (!productId) clearCart();
-
-      navigate(`/thank-you/${response.data.orderNumber}`);
+        if (!productId) clearCart();
+        navigate(`/thank-you/${response.data.orderNumber}`);
+      }, 800); // Artificial delay for smoother UX
     } catch (error) {
+      setIsLoading(false);
       console.error("Checkout Failed:", error.response?.data || error.message);
       alert("Something went wrong!");
     }
   };
 
+  // ⬅️ LOADING UI WHEN isLoading IS TRUE
+  if (isLoading) {
+    return (
+      <Container className="checkout-loading-container">
+        <div className="checkout-loader">
+          <div className="spinner"></div>
+          <Typography variant="h5" color="white" mt={2}>
+            Processing your order...
+          </Typography>
+        </div>
+      </Container>
+    );
+  }
+
   return (
     <Container className="checkout-container">
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
-          <Typography variant="h4">Checkout</Typography>
+          <Typography
+            variant="h4"
+            color="white"
+            style={{ textAlign: "center" }}
+          >
+            Checkout
+          </Typography>
           <CheckoutForm
             order={order}
             onChange={handleChange}
@@ -119,7 +141,9 @@ const CheckoutPage = () => {
         <Grid item xs={12} md={6}>
           {productsToCheckout.length > 0 ? (
             <>
-              <Typography variant="h5">Order Summary</Typography>
+              <Typography variant="h5" color="white">
+                Order Summary
+              </Typography>
               <CheckoutSummary
                 products={productsToCheckout}
                 subtotal={subtotal}
@@ -128,7 +152,7 @@ const CheckoutPage = () => {
               />
             </>
           ) : (
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="body1" color="white">
               Your cart is empty.
             </Typography>
           )}
