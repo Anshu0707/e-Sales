@@ -49,7 +49,7 @@ const ThankYouPage = () => {
             animation: "zoomIn 0.8s ease",
           }}
         />
-        <Typography variant="h6" color="primary">
+        <Typography variant="h6" color="white">
           Pikachu says thank you for shopping!
         </Typography>
       </Box>
