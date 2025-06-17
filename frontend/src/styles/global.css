@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
   font-family: 'Poppins', 'Segoe UI', Roboto, sans-serif;
-  color: #1f2937; 
-  background-color: #f9fafb; 
+  color: #1f2937;
+  background: linear-gradient(-45deg, #ff5722, #2196f3, #673ab7, #00bcd4);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
 }

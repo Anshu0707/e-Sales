@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IconButton, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -30,9 +30,29 @@ const Navbar = ({
 
   const isLandingPage = location.pathname === "/";
 
+  // Butterfly animation state
+  const [butterflyPos, setButterflyPos] = useState(-50);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setButterflyPos((prevPos) =>
+        prevPos >= window.innerWidth ? -50 : prevPos + 2
+      );
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <nav className="navbar">
       <div className="brand">MyStore</div>
+
+      {/* Animated Butterfly */}
+      <img
+        src="/assets/Butterfly-2.gif"
+        alt="Butterfly"
+        className="navbar-butterfly"
+        style={{ right: butterflyPos + "px" }}
+      />
 
       <div className="nav-links">
         <Link to="/" className={`nav-link ${isLandingPage ? "active" : ""}`}>

@@ -97,6 +97,21 @@
 }
 
 
+/* Butterfly Animation */
+.navbar-butterfly {
+    width: 55px;
+    height: auto;
+    position: absolute;
+    top: 5px; /* Adjust so it doesn't alter navbar height */
+    animation: flutter 2s infinite alternate;
+}
+
+/* Fluttering Motion */
+@keyframes flutter {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(8deg); }
+    100% { transform: translateY(0) rotate(-8deg); }
+}
 
 @media (max-width: 768px) {
   .nav-links {

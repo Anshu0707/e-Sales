@@ -53,6 +53,12 @@ const ProductCard = ({ product, showBuyNow }) => {
       onClick={handleNavigateToDetails}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
+      whileHover={{
+        scale: 1.05,
+        rotateX: 5,
+        rotateY: 5,
+        boxShadow: "0px 4px 15px rgba(255, 255, 255, 0.3)",
+      }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <Box className="product-image-container">
@@ -90,6 +96,7 @@ const ProductCard = ({ product, showBuyNow }) => {
               scale: 1.03,
               boxShadow: "0px 0px 12px rgba(255, 87, 34, 0.8)",
             }}
+            whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Buy Now
@@ -102,6 +109,8 @@ const ProductCard = ({ product, showBuyNow }) => {
             sx={{ mt: 1 }}
             onClick={handleAddToCart}
             className="add-to-cart-button"
+            component={motion.div}
+            whileTap={{ scale: 0.95 }}
           >
             Add to Cart
           </Button>
