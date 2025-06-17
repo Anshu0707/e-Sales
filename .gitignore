@@ -35,7 +35,6 @@ yarn-error.log*
 # ============================
 # Frontend junk to exclude
 # ============================
-/frontend/public/
 /frontend/src/App.test.js
 /frontend/src/logo.svg
 /frontend/src/reportWebVitals.js
